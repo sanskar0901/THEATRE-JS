@@ -2,6 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Gltf, ScrollControls, useScroll } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
 import theatreState from "./theatreState.json";
+import theatreState2 from "./state2.json";
 
 import {
   SheetProvider,
@@ -10,13 +11,13 @@ import {
 } from "@theatre/r3f";
 
 export default function App() {
-  const sheet = getProject("Fly Through", { state: theatreState }).sheet(
+  const sheet = getProject("Fly Through", { state: theatreState2 }).sheet(
     "Scene"
   );
 
   return (
     <Canvas gl={{ preserveDrawingBuffer: true }}>
-      <ScrollControls pages={5}>
+      <ScrollControls pages={7}>
         <SheetProvider sheet={sheet}>
           <Scene />
         </SheetProvider>
@@ -37,15 +38,15 @@ function Scene() {
     sheet.sequence.position = scroll.offset * sequenceLength;
   });
 
-  const bgColor = "#84a4f4";
+  const bgColor = "#000000";
 
   return (
     <>
       <color attach="background" args={[bgColor]} />
-      <fog attach="fog" color={bgColor} near={-4} far={10} />
+      {/* <fog attach="fog" color={bgColor} near={-4} far={10} /> */}
       <ambientLight intensity={0.5} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      <Gltf src="/environment.glb" castShadow receiveShadow />
+      <Gltf src="/env2.glb" castShadow receiveShadow />
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
