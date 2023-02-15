@@ -11,7 +11,7 @@ import {
 } from "@theatre/r3f";
 
 export default function App() {
-  const sheet = getProject("Fly Through", { state: theatreState }).sheet(
+  const sheet = getProject("Fly Through", { state: theatreState2 }).sheet(
     "Scene"
   );
 
